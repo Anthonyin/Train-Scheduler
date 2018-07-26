@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Train Scheduler</title>
+  <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+  <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+    crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+    crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <div class="container">
+    <div class="jumbotron" style="text-align: center; background-color: aqua;padding-top: 20px;padding-bottom: 20px;margin-top: 30px;margin-bottom: 20px">
+      <div class=" container ">
+        <h1 class="display-4 ">Train Scheduler</h1>
+        <p class="lead "></p>
+      </div>
+    </div>
+  </div>
+  <div id="current">
+    <h3 style="background-color: aqua;padding: 20px;">Current Train Scheduler</h3>
+  </div>
+  <table class="table" style="margin-left: 10px;margin-right: 10px">
+    <thead>
+      <tr>
+        <th scope="col" id="trainName">Train Name</th>
+        <th scope="col" id="Destination">Destination</th>
+        <th scope="col" id="Frequency">Frequency(min)</th>
+        <th scope="col" id="nextArrival">Next Arrival</th>
+        <th scope="col" id="minutesAway">Minutes Away</th>
+      </tr>
+    </thead>
+    <tbody id="add-row">
+
+    </tbody>
+  </table>
+
+  <div id="add">
+    <h3 style="background-color: aqua;padding: 20px;margin-top: 40px;margin-bottom: 10px">Add Train</h3>
+  </div>
+
+  <form style="margin-left: 10px;margin-right: 10px">
+    <div class="form-group">
+      <label for="text">Train Name</label>
+      <input type="text" class="form-control" id="newTrainName" placeholder="Enter train name">
+    </div>
+    <div class="form-group">
+      <label for="text">Destination</label>
+      <input type="text" class="form-control" id="newTrainDestination" placeholder="Enter destination">
+    </div>
+    <div class="form-group">
+      <label for="text">First Train Time (HH:MM- Militry Time)</label>
+      <input type="text" class="form-control" id="newTrainTime">
+    </div>
+    <div class="form-group">
+      <label for="text">Frequency (min)</label>
+      <input type="text" class="form-control" id="frequency">
+    </div>
+
+    <button type="submit" id="add-train">Submit</button>
+  </form>
+
+  <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+  <script src="assets/javascript/app.js "></script>
+  <script src="https://www.gstatic.com/firebasejs/5.3.0/firebase.js "></script>
+</body>
+
+</html>
