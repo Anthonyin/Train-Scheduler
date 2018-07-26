@@ -11,12 +11,7 @@ $(document).ready(function() {
 
   var database = firebase.database();
 
-  // var newName;
-  // var newDestination;
-  // var newFirstTrain;
-  // var newFrequency = 0;
-
-  $('#newTrainName').on('click', function(event) {
+  $('#add-train').on('click', function(event) {
     event.preventDefault();
     var currName = $('#newTrainName')
       .val()
@@ -39,10 +34,10 @@ $(document).ready(function() {
 
     database.ref().push(newTrain);
 
-    console.log(newTrain.name);
-    console.log(newTrain.destination);
-    console.log(newTrain.firstTrain);
-    console.log(newTrain.frequency);
+    // console.log(newTrain.name);
+    // console.log(newTrain.destination);
+    // console.log(newTrain.firstTrain);
+    // console.log(newTrain.frequency);
 
     $('#newTrainName').val('');
     $('#newTrainDestination').val('');
@@ -51,19 +46,18 @@ $(document).ready(function() {
   });
 
   database.ref().on('child_added', function(childSnapshot) {
-    console.log(childSnapshot.val());
+    // console.log(childSnapshot.val());
 
     var currName = childSnapshot.val().name;
     var currDestination = childSnapshot.val().destination;
     var currFirstTrain = childSnapshot.val().firstTrain;
     var currFrequency = childSnapshot.val().frequency;
 
-    console.log(currName);
-    console.log(currDestination);
-    console.log(currFirstTrain);
-    console.log(currFrequency);
+    // console.log(currName);
+    // console.log(currDestination);
+    // console.log(currFirstTrain);
+    // console.log(currFrequency);
 
-    var nextArr;
     var minAway;
 
     var firstTrainNew = moment(
@@ -73,13 +67,15 @@ $(document).ready(function() {
     var diffTime = moment().diff(moment(firstTrainNew), 'tinutes');
     var remainder = diffTime % childSnapshot.val().frequency;
     var minAway = childSnapshot.val().frequency - remainder;
-    var nextTrain = moment(nextTrain).format('hh:mm');
+    var nextTrain = moment().add(minAway, 'minutes');
+    nextTrain = moment(nextTrain).format('hh:mm');
 
     var newRow = $('<tr>').append(
       $('<td>').text(currName),
       $('<td>').text(currDestination),
-      $('<td>').text(currFirstTrain),
-      $('<td>').text(currFrequency)
+      $('<td>').text(currFrequency),
+      $('<td>').text(nextTrain),
+      $('<td>').text(minAway)
     );
 
     $('#add-row').append(newRow);
